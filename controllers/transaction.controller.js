@@ -11,7 +11,6 @@ class TransactionController {
     try {
       const { method, params, id } = req.body;
 
-      console.log('$$$$$$$$$$$$$$$$$$$$$$$$: ', method)
       switch (method) {
         case PaymeMethod.CheckPerformTransaction: {
           await transactionService.checkPerformTransaction(params, id);

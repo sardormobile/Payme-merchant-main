@@ -19,7 +19,6 @@ exports.paymeCheckToken = (req, res, next) => {
     if (!data.includes(PAYME_MERCHANT_KEY)) {
       throw new TransactionError(PaymeError.InvalidAuthorization, id);
     }
-    console.log('====*********************=======', authHeader.split(" ")[1])
 
     next();
   } catch (err) {
