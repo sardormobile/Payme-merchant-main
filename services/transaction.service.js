@@ -199,8 +199,25 @@ class TransactionService {
   }
   async getStatement(params, id) {
     const result = await  transactionRepo.getFilterByTime(params.from, params.to);
+    const ont = result.map(obj => {
+      return {
+            id: obj.id,
+            time: obj.updatedAt,
+            amount: obj.amount + 100,
+            account: {
+              user_id: obj.user_id,
+            },
+            product_id: obj.product_id,
+            create_time: obj.create_time,
+            perform_time: obj.perform_time,
+            cancel_time: obj.cancel_time,
+            state: obj.state,
+            reason: obj.reason
+      }
+    })
+   // const { id,  updatedAt, amount, user_id, product_id, create_time, perform_time, cancel_time, state, reason} = result
     return {
-          transactions : result
+          transactions : ont
         }
   }
 }
