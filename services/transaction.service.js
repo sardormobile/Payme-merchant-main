@@ -203,7 +203,7 @@ class TransactionService {
       return {
             id: obj.id,
             time: obj.updatedAt,
-            amount: obj.amount + 100,
+            amount: obj.amount * 100,
             account: {
               user_id: obj.user_id,
             },
