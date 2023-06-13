@@ -197,6 +197,12 @@ class TransactionService {
       state: -Math.abs(transaction.state),
     };
   }
+  async getStatement(params, id) {
+    const result = await  transactionRepo.getFilterByTime(params.from, params.to);
+    return {
+          transactions : result
+        }
+  }
 }
 
 module.exports = new TransactionService(transactionRepo, userRepo, productRepo);
